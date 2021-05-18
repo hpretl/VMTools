@@ -18,7 +18,7 @@ mkdir $TOOLS_ROOT
 echo "[-- Message --] Cloning magic"
 git clone git://opencircuitdesign.com/magic $MAGIC_ROOT
 cd $MAGIC_ROOT
-git checkout 8.3.108
+git checkout 8.3.160
 ./configure --prefix=$TOOLS_ROOT/binaries/magic
 make -j$(nproc)
 
@@ -37,6 +37,18 @@ make -j$(nproc)
 echo "[-- Message --] Installing cocotb"
 pip3 install cocotb --user
 
+# summary
+cd $TOOLS_ROOT
+git clone https://github.com/mattvenn/openlane_summary
+
+# precheck
+cd $TOOLS_ROOT
+git clone https://github.com/efabless/open_mpw_precheck
+cd open_mpw_precheck
+git checkout cbd5fd47c4aaa2252e69b8c568592f744e052b23
+docker pull efabless/open_mpw_precheck:latest
+
+
 # FPGA tools
 wget -P $FPGA_ROOT $FPGA_VER
 cd $FPGA_ROOT
@@ -53,11 +65,18 @@ echo 'export RISCV_GCC="$TOOLS_ROOT/riscv-gcc"' >> ~/.bashrc
 echo 'export FPGA_ROOT="$TOOLS_ROOT/yosys_nightly"' >> ~/.bashrc
 echo 'export PATH=$PATH:$FPGA_ROOT/fpga-toolchain/bin' >> ~/.bashrc
 echo 'export PATH=$PATH:$RISCV_GCC/riscv64-unknown-elf-gcc-8.3.0-2020.04.1-x86_64-linux-ubuntu14/bin' >> ~/.bashrc
-echo 'export PDK_ROOT="$TOOLS_ROOT/PDK"' >> ~/.bashrc
-echo 'export PDKPATH=$PDK_ROOT/sky130A' >> ~/.bashrc
-echo 'export OPENLANE_ROOT="$TOOLS_ROOT/openlane_rc6"' >> ~/.bashrc
+echo 'export PATH=$PATH:$TOOLS_ROOT/openlane_summary' >> ~/.bashrc
+echo 'export PDK_ROOT="$TOOLS_ROOT/pdk"' >> ~/.bashrc
+echo 'export PDKPATH="$PDK_ROOT/sky130A"' >> ~/.bashrc
+echo 'export OPENLANE_ROOT="$TOOLS_ROOT/openlane"' >> ~/.bashrc
+echo 'export PDK_PATH="$PDKPATH"' >> ~/.bashrc
+echo 'export CARAVEL_ROOT="$TOOLS_ROOT/caravel_user_project/caravel"' >> ~/.bashrc
+echo 'export TARGET_PATH="$TOOLS_ROOT/caravel_user_project"' >> ~/.bashrc
 
-echo 'alias start_openlane="cd $OPENLANE_ROOT; docker run -it -v $OPENLANE_ROOT:/openLANE_flow -v $PDK_ROOT:$PDK_ROOT -e PDK_ROOT=$PDK_ROOT -u $(id -u $USER):$(id -g $USER) openlane:rc6"' >> ~/.bashrc
+echo 'export GCC_PREFIX=riscv64-unknown-elf' >> ~/.bashrc
+echo 'export GCC_PATH=$RISCV_GCC/riscv64-unknown-elf-gcc-8.3.0-2020.04.1-x86_64-linux-ubuntu14/bin' >> ~/.bashrc
+echo 'export OPENLANE_TAG=v0.15' >> ~/.bashrc
+
 
 
 cd $MAGIC_ROOT

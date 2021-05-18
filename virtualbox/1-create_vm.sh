@@ -2,15 +2,15 @@
 # Diego H, 24/03/2021
 # Define your arguments here
 # Path to store the Virtual machine configuration
-export STORE_PATH=${PWD}/zero_to_asic_vm
+export STORE_PATH=${PWD}/zero_to_asic_vm_mpw2
 # Name of the virtual machine OS
-export NAME=ubuntu
+export NAME=ztoa_mpw2
 # PAth of the ISO file
 export ISO=~/Downloads/ubuntu-20.04.2.0-desktop-amd64.iso
 # Size of the RAM in GB
 export RAM_SIZE=4
 # Size of the HDD in GB
-export HDD_SIZE=30
+export HDD_SIZE=25
 # Number of CPUs
 export N_CPU=2
 
@@ -39,7 +39,7 @@ echo "[- Message -] Attaching ISO DVD $ISO"
 VBoxManage storageattach $NAME --storagectl IDE --device 0 --port 0 --type dvddrive --medium $ISO
 # Creating a port forwarding for SSH connection
 echo "[- Message -] Enabling ssh port forwarding"
-VBoxManage modifyvm "ubuntu" --natpf1 "SSH,tcp,127.0.0.1,2522,10.0.2.15,22"
+VBoxManage modifyvm "$NAME" --natpf1 "SSH,tcp,127.0.0.1,2522,10.0.2.15,22"
 # Launch
 echo "[- Message -] Launching virtual machine $NAME"
 VBoxManage unattended install $NAME --iso=$ISO --user=zerotoasic --password=12345  --install-additions --additions-iso=$ADDITIONS_PATH --script-template=$PRE --post-install-template=$POST --time-zone=CET --hostname=zerotoasic.vm.com --start-vm=gui

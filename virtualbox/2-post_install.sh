@@ -1,5 +1,5 @@
 # Name of the virtual machine OS
-export NAME=ubuntu
+export NAME=ztoa_mpw2
 # Copy the tools script to the VM, first install SSH
 echo "[- Message -] Installing ssh in $NAME"
 VBoxManage --nologo guestcontrol $NAME run --exe "/usr/bin/apt-get" --username root --password 12345  --wait-stdout -- apt/arg0 install -y ssh
