@@ -67,9 +67,8 @@ echo 'export PATH=$PATH:$FPGA_ROOT/fpga-toolchain/bin' >> ~/.bashrc
 echo 'export PATH=$PATH:$RISCV_GCC/riscv64-unknown-elf-gcc-8.3.0-2020.04.1-x86_64-linux-ubuntu14/bin' >> ~/.bashrc
 echo 'export PATH=$PATH:$TOOLS_ROOT/openlane_summary' >> ~/.bashrc
 echo 'export PDK_ROOT="$TOOLS_ROOT/pdk"' >> ~/.bashrc
-echo 'export PDKPATH="$PDK_ROOT/sky130A"' >> ~/.bashrc
+echo 'export PDK_PATH="$PDK_ROOT/sky130A"' >> ~/.bashrc
 echo 'export OPENLANE_ROOT="$TOOLS_ROOT/openlane"' >> ~/.bashrc
-echo 'export PDK_PATH="$PDKPATH"' >> ~/.bashrc
 echo 'export CARAVEL_ROOT="$TOOLS_ROOT/caravel_user_project/caravel"' >> ~/.bashrc
 echo 'export TARGET_PATH="$TOOLS_ROOT/caravel_user_project"' >> ~/.bashrc
 
