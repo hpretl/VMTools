@@ -2,15 +2,15 @@
 # Diego H, 24/03/2021
 # Define your arguments here
 # Path to store the Virtual machine configuration
-export STORE_PATH=${PWD}/zero_to_asic_vm_mpw2
+export STORE_PATH=${PWD}/zero_to_asic_vm_mpw2_30g
 # Name of the virtual machine OS
-export NAME=ztoa_mpw2
+export NAME=ztoa_mpw2_30g
 # PAth of the ISO file
 export ISO=~/Downloads/ubuntu-20.04.2.0-desktop-amd64.iso
 # Size of the RAM in GB
 export RAM_SIZE=4
 # Size of the HDD in GB
-export HDD_SIZE=25
+export HDD_SIZE=30
 # Number of CPUs
 export N_CPU=2
 

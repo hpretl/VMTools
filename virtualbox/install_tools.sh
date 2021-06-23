@@ -75,6 +75,7 @@ echo 'export TARGET_PATH="$TOOLS_ROOT/caravel_user_project"' >> ~/.bashrc
 echo 'export GCC_PREFIX=riscv64-unknown-elf' >> ~/.bashrc
 echo 'export GCC_PATH=$RISCV_GCC/riscv64-unknown-elf-gcc-8.3.0-2020.04.1-x86_64-linux-ubuntu14/bin' >> ~/.bashrc
 echo 'export OPENLANE_TAG=v0.15' >> ~/.bashrc
+echo 'export IMAGE_NAME=efabless/openlane:$OPENLANE_TAG' >> ~/.bashrc
 
 
 
