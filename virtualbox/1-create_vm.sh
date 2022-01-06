@@ -1,23 +1,32 @@
 #!/bin/bash
 # Diego H, 24/03/2021
+# Update 2022 by Harald Pretl, Institute for Integrated Circuits, Johannes Kepler University Linz
+
 # Define your arguments here
+
 # Path to store the Virtual machine configuration
-export STORE_PATH=${PWD}/zero_to_asic_vm_mpw2_30g
+#export STORE_PATH=${HOME}/Dropbox/IIC_Xubuntu_21.10-v2
+export STORE_PATH=/Volumes/harald/IIC_Xubuntu_21.10-v2
 # Name of the virtual machine OS
-export NAME=ztoa_mpw2_30g
-# PAth of the ISO file
-export ISO=~/Downloads/ubuntu-20.04.2.0-desktop-amd64.iso
+export NAME=IIC_Xubuntu_21.10-v2
+# Path of the ISO file
+export ISO=${HOME}/Downloads/xubuntu-21.10-desktop-amd64.iso
 # Size of the RAM in GB
 export RAM_SIZE=4
 # Size of the HDD in GB
-export HDD_SIZE=30
+export HDD_SIZE=20
 # Number of CPUs
 export N_CPU=2
+# Location of templates (first one for Linux, second one for MacOS)
+#export VBOX_DIR=/usr/share/virtualbox
+export VBOX_DIR=/Applications/VirtualBox.app/Contents/MacOS
 
 # Templates for unattended install
-export PRE=/usr/share/virtualbox/UnattendedTemplates/ubuntu_preseed.cfg
-export POST=/usr/share/virtualbox/UnattendedTemplates/debian_postinstall.sh
-export ADDITIONS_PATH=/usr/share/virtualbox/VBoxGuestAdditions.iso
+export PRE=${VBOX_DIR}/UnattendedTemplates/ubuntu_preseed.cfg
+export POST=${VBOX_DIR}/UnattendedTemplates/debian_postinstall.sh
+export ADDITIONS_PATH=${VBOX_DIR}/VBoxGuestAdditions.iso
+
+# Let's go to work
 
 echo "[- Message -]: Creating a VM with name $NAME and path $STORE_PATH"
 # --register will enable the VM in the VirtualBox GUI
@@ -42,4 +51,4 @@ echo "[- Message -] Enabling ssh port forwarding"
 VBoxManage modifyvm "$NAME" --natpf1 "SSH,tcp,127.0.0.1,2522,10.0.2.15,22"
 # Launch
 echo "[- Message -] Launching virtual machine $NAME"
-VBoxManage unattended install $NAME --iso=$ISO --user=zerotoasic --password=12345  --install-additions --additions-iso=$ADDITIONS_PATH --script-template=$PRE --post-install-template=$POST --time-zone=CET --hostname=zerotoasic.vm.com --start-vm=gui
+VBoxManage unattended install $NAME --iso=$ISO --user=iic --password=iic!123 --install-additions --additions-iso=$ADDITIONS_PATH --script-template=$PRE --post-install-template=$POST --time-zone=CET --hostname=iic-vm.vm.com --start-vm=gui
