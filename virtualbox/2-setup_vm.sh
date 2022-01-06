@@ -8,7 +8,7 @@ as root:
 
 usermod -aG sudo iic
 
-sudo apt install git docker
+sudo apt install git docker.io
 
 sudo usermod -aG docker iic
 

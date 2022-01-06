@@ -5,12 +5,11 @@
 # Define your arguments here
 
 # Path to store the Virtual machine configuration
-#export STORE_PATH=${HOME}/Dropbox/IIC_Xubuntu_21.10-v2
-export STORE_PATH=/Volumes/harald/IIC_Xubuntu_21.10-v2
+export STORE_PATH=${HOME}/Dropbox/IIC_Xubuntu_v2
 # Name of the virtual machine OS
-export NAME=IIC_Xubuntu_21.10-v2
+export NAME=IIC_Xubuntu_v2
 # Path of the ISO file
-export ISO=${HOME}/Downloads/xubuntu-21.10-desktop-amd64.iso
+export ISO=${HOME}/Downloads/xubuntu-20.04.3-desktop-amd64.iso
 # Size of the RAM in GB
 export RAM_SIZE=4
 # Size of the HDD in GB
